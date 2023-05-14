@@ -1,0 +1,2 @@
+# City-transport-RFID-Based-Bus-Ticketing-Systems
+City transport: RFID-Based Bus Ticketing Systems system allows a user to use public transportation with ease and safety. It provides a user with RFID cards/ smart cards which he/she needs to scan before entering and exiting the vehicle. It will also display users traveling details such as distance traveled, time required to travel, total cost, etc.
