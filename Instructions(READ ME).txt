@@ -1,0 +1,32 @@
+1. Install Pycharm IDE. (Recommended)
+2. Install packages from Requirements.txt
+3. Install Razorpay client using command (Run in command prompt inside project's root folder) - pip install razorpay
+4. Do not delete .env file
+
+
+Steps for pycharm:
+1. Connect the device to a Wifi network and go into terminal and type - ipconfig
+2. Copy the IPV4 address and paste that in main.py at last in section as:
+	if __name__ == "__main__":
+    	app.run(debug=true, host="IPV4 copied")
+3. Run the main.py file.
+
+Steps for ArduinoIDE:
+1. Connect the device to the same Wifi network.
+2. In .ino file, paste the same IPV4 address copied containing the route parameters as:
+	 http.begin(client, "http://IPV4 COPIED:5000/tryMy");      //Specify request destination 
+
+3. After connecting the USB to ESP32 compile the sketch and run.
+4. Open the serial moniter and wait until code gets uploaded. 
+5. Scan the Rfid cards of users already registered in the database.
+	
+
+Current active users:
+
+id     rfid                    name                  email                           purpose         login_password
+------------------------------------------------------------------------------------------------------------------------
+1.     _77 208 30 43           Aditya Ladawa         adityaladawa11@gmail.com        ADMIN           123456
+------------------------------------------------------------------------------------------------------------------------
+2.     _108 145 014 59         Ladawa Aditya         adityaladwa11@gmail.com         TESTING         123456
+------------------------------------------------------------------------------------------------------------------------
+3.     __NONE__                Adi LADAWA            adityaladwa11@gmail.com         TESTING         123456
