@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "header.html" %}
+<!-- ======= Hero Section ======= -->
+<body>
+<section id="hero">
+    <div class="hero-container" data-aos="fade-up" data-aos-delay="150">
+        <h1>Smart Travel.</h1>
+        <h2>Making local travel payments easier.</h2>
+        <div class="d-flex">
+            {% if not current_user.is_authenticated: %}
+            <a href="{{ url_for('register') }}" class="btn-get-started scrollto">Get started</a>
+            {% else: %}
+            <a href="{{ url_for('profile') }}" class="btn-get-started scrollto">Your profile</a>
+            {% endif %}
+        </div>
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+    <!-- ======= How It Works Section ======= -->
+    <section id="services" class="services section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>How it works</h2>
+                <p>Tap in, tap out, pay online</p>
+            </div>
+
+            <div class="row" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-md-6">
+                    <div class="icon-box">
+                        <i class="bi bi-person-plus"></i>
+                        <h4>1. Register</h4>
+                        <p>Create an account on this website. The administrator links an RFID card to your
+                            account.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4 mt-md-0">
+                    <div class="icon-box">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <h4>2. Tap in when boarding</h4>
+                        <p>Scan your card at the reader of the stop where you board. A green LED confirms the
+                            entry.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4 mt-md-0">
+                    <div class="icon-box">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <h4>3. Tap out when leaving</h4>
+                        <p>Scan the same card at the stop where you get off. The exit stop must be different from
+                            the entry stop.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4 mt-md-0">
+                    <div class="icon-box">
+                        <i class="bi bi-calculator"></i>
+                        <h4>4. Fare is calculated</h4>
+                        <p>The server works out the distance between the two stops and charges Rs. 4 per
+                            kilometre.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4 mt-md-0">
+                    <div class="icon-box">
+                        <i class="bi bi-credit-card"></i>
+                        <h4>5. Pay online</h4>
+                        <p>Log in, open your profile and pay the outstanding fare through Razorpay. A receipt is
+                            shown once the payment is verified.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4 mt-md-0">
+                    <div class="icon-box">
+                        <i class="bi bi-clock-history"></i>
+                        <h4>6. Travel again</h4>
+                        <p>The trip is added to your travel history and your card can be used for the next
+                            journey.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End How It Works Section -->
+
+</main><!-- End #main -->
+</body>
+
+{% include "footer.html" %}
+
+</html>

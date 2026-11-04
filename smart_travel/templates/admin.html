@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+{% import "bootstrap/wtf.html" as wtf %}
+{% include "header.html" %}
+<body>
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>All users</h2>
+
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+        <div class="flash-msg">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <p class=flashes style="color: red">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </p>
+            {% endif %}
+            {% endwith %}
+        </div>
+
+        {% for user in all_users: %}
+        <div class="user-card card col-lg mb-4 rounded-3 shadow-sm">
+            <h2><i class="user-icon fa fa-user-circle-o" aria-hidden="true"></i>{{ user.name }}
+
+
+                <div class="align-self-end ml-auto">
+                    <a class="btn btn-success" style="text-align:left"
+                       href="{{ url_for('show_details', user_detail_id=user.id) }}">Details</a>
+
+                </div>
+
+
+            </h2>
+
+            <hr>
+            <p>
+            <p>Email: {{ user.email }}</p>
+            {% if not user.rfid: %}
+            <p>User status: RFID not assigned.</p>
+            {% else: %}
+            <p>RFID: {{ user.rfid }}</p>
+            {% endif %}
+
+        </div>
+        {% endfor %}
+    </section>
+
+</main><!-- End #main -->
+
+{% include "footer.html" %}
+</body>
+
+</html>

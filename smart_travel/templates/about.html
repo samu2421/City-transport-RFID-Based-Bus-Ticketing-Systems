@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+<body>
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>About</h2>
+                <ol>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li>About</li>
+                </ol>
+            </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+
+                <div class="col-lg-6 align-self-baseline" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="{{ url_for('static', filename='assets/img/city-buses.jpg') }}" class="img-fluid" alt="City street with buses">
+                </div>
+
+                <div class="col-lg-6 pt-3 pt-lg-0 content">
+                    <h3>An RFID-based automated ticketing prototype for city buses.</h3>
+                    <p class="fst-italic">
+                        Smart Travel replaces paper tickets and cash with a contactless card. Passengers tap an RFID
+                        card when they board and when they leave, and the fare is calculated from the distance
+                        between the two stops.
+                    </p>
+                    <ul>
+                        <li><i class="bx bx-check-double"></i> ESP32 microcontroller with MFRC522 RFID readers, one
+                            per bus stop, and green/red LEDs for feedback.
+                        </li>
+                        <li><i class="bx bx-check-double"></i> Card taps are sent over Wi-Fi to a Flask server that
+                            records the journey in a database.
+                        </li>
+                        <li><i class="bx bx-check-double"></i> Distance-based fare of Rs. 4 per kilometre, paid online
+                            through Razorpay.
+                        </li>
+                        <li><i class="bx bx-check-double"></i> Travel history for passengers and an admin panel to
+                            assign cards and manage users.
+                        </li>
+                    </ul>
+                    <p>
+                        Built as a Project Based Learning-II project in the Department of Artificial Intelligence
+                        and Data Science, PES's Modern College of Engineering, Pune (2021&ndash;22).
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section><!-- End About Section -->
+</main><!-- End #main -->
+</body>
+
+{% include "footer.html" %}
+</html>

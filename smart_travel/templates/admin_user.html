@@ -1,0 +1,98 @@
+{% include "header.html" %}
+
+<body>
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Admin</h2>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+            <div class="container">
+                <div class="main-body">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column align-items-center text-center">
+                                        <img src="{{ url_for('static', filename='assets/img/team/team-1.jpg') }}" alt="Admin"
+                                             class="rounded-circle p-1" width="110">
+                                        <div class="mt-3">
+                                            <h4>{{ selected_user.name }}</h4>
+                                        </div>
+                                        {% if selected_user.id != admin_user_id %}
+                                        <a class="btn btn-danger" href="{{ url_for('delete_user', user_id_to_delete=selected_user.id) }}">Remove user</a>
+                                        {% endif %}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div><!--            USER_PROFILE_CARD END-->
+
+                        <!--            USER_PROFILE_details start-->
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Full Name:</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <p>{{ selected_user.name }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Email:</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <p>{{ selected_user.email }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+
+                                        <div class="row mb-3">
+                                            <div class="col-sm-3">
+                                                <h6 class="mb-0">RFID:</h6>
+                                            </div>
+                                            <div class="col-sm-9 text-secondary">
+                                                {% if selected_user.rfid: %}
+                                                <p>{{ selected_user.rfid }}</p>
+                                                {% else: %}
+                                                <form method="POST" action="{{ url_for('add_user_rfid', user_id_for_rfid=selected_user.id) }}">
+                                                    <input type="text" name="rfid_value">
+                                                    <button type="submit" class="btn btn-success">Add RFID</button>
+                                                </form>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--            USER_PROFILE_details end-->
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+
+</body>
+{% include "footer.html" %}
+
+
+
+

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+<body>
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>User profile</h2>
+                <ol>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li>Profile</li>
+                </ol>
+            </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+            <div class="main-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <img src="{{ url_for('static', filename='assets/img/team/team-1.jpg') }}" alt="User"
+                                         class="rounded-circle p-1" width="110">
+                                    <div class="mt-3">
+                                        <h4>{{ current_user.name }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--            USER_PROFILE_CARD END-->
+
+                    <!--            USER_PROFILE_details start-->
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Full Name:</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <p>{{ current_user.name }}</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Email:</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <p>{{ current_user.email }}</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">RFID</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <p>{{ current_user.rfid or "Not assigned yet" }}</p>
+                                    </div>
+                                </div>
+
+                                {% if pending %}
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Current trip</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        {% if pending.due is not none %}
+                                        <p>Outstanding fare: <strong>{{ pending.due|float|round|int }} Rs.</strong>
+                                            ({{ pending.distance }} KM)</p>
+                                        {% else %}
+                                        <p>Journey in progress since {{ pending.initial_timestamp }}.</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endif %}
+
+                                <form action="{{ url_for('process_pay') }}" method="post">
+                                    <button type="submit" class="btn btn-primary">Pay</button>
+                                </form>
+
+                                <div class="flash-msg mt-3">
+                                    {% with messages = get_flashed_messages() %}
+                                    {% if messages %}
+                                    <p class=flashes style="color: red">
+                                        {% for message in messages %}
+                                        {{ message }}
+                                        {% endfor %}
+                                    </p>
+                                    {% endif %}
+                                    {% endwith %}
+                                </div>
+                            </div>
+                        </div><!--            USER_PROFILE_details end-->
+
+                        {% for trip in recent[::-1] %}
+                        <div class="history-card card-body mb-4 rounded-3 shadow-sm">
+                            <strong>{{ trip._from_time[:10] }}</strong>
+                            <hr>
+                            <p>Due: {{ trip.ticket_due }} Rs.</p>
+                            <p>Distance travelled: {{ trip.travel_distance }} KM</p>
+                            <p>From-To: {{ trip._from }} to {{ trip._to }}</p>
+                            <p>Timestamps: {{ trip._from_time[11:] }} to {{ trip._to_time[11:] }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main><!-- End #main -->
+</body>
+{% include "footer.html" %}
+</html>

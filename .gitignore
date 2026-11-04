@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local configuration and secrets
+.env
+hardware/**/config.h
+
+# Runtime data (create it with: flask --app smart_travel.main init-db)
+instance/
+*.db
+*.sqlite3
+
+# Tests and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# IDE and OS files
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Archives (project backups are kept outside the repository)
+*.rar
+*.zip

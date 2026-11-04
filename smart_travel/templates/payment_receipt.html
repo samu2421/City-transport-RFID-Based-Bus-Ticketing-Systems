@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+<body>
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Receipt</h2>
+            </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <div class="payment-card card mb-4 rounded-3 shadow-sm">
+        <div class="card-body">
+            <h1 class="card-title pricing-card-title"><i class="check-icon fa fa-check-circle" aria-hidden="true"></i>{{
+                payment['amount']/100 }} Rs.</h1>
+            <hr>
+            <h1><small class="text-muted fw-light">Order Id: {{ payment['id'] }}</small></h1>
+            <h1><small class="text-muted fw-light">Payment Id: {{ payment['payment_id'] }}</small></h1>
+            <h1><small class="text-muted fw-light">status: {{ payment['status'] }}</small></h1>
+            <hr>
+            <ul class="list-unstyled mt-3 mb-4">
+                <li>Distance travelled: {{ _entry.travel_distance }} Km.</li>
+                <li>From: {{ _entry._from }} To: {{ _entry._to }}</li>
+                <li>Timestamps: {{ _entry._from_time[:10] }} ( {{ _entry._from_time[11:] }} to {{ _entry._to_time[11:] }})
+                </li>
+            </ul>
+            <a class="btn btn-outline-primary" href="{{ url_for('profile') }}">Back to profile</a>
+        </div>
+    </div>
+</main>
+</body>
+{% include "footer.html" %}
+</html>
