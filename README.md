@@ -11,6 +11,16 @@ Passengers can see their travel history, and an administrator manages accounts a
 *The physical demonstration model built for the original project: a city route with RFID reader kiosks
 and status LEDs at the stops.*
 
+## At a glance
+
+| | |
+|---|---|
+| **Project** | "City transport: RFID-Based Bus Ticketing Systems" (Smart Travel) — Project Based Learning-II team project (second year), B.E. Artificial Intelligence and Data Science, PES's Modern College of Engineering, Pune (Savitribai Phule Pune University), 2021–22 |
+| **Team** | Five students (see [Acknowledgements and project context](#acknowledgements-and-project-context)) |
+| **My role** | Team member in 2021–22; individual responsibilities were not recorded in the project documents. In November 2026 I recovered the code from project backups and rebuilt this repository: restructured the Flask application, added Razorpay Checkout with server-side signature verification, database seeding and a reader simulator, wrote the 41-test suite and GitHub Actions workflow, and wrote this documentation. The 2026 update was carried out with AI coding assistance. |
+| **Stack** | ESP32 (Arduino C++), MFRC522 RFID readers, Python, Flask, SQLAlchemy, SQLite, Razorpay (test mode), pytest, GitHub Actions |
+| **Status** | Demonstrated on a physical model in 2021–22. The 2026 code is tested with simulated hardware and payments; the firmware has not been re-run on hardware. |
+
 > **Historical implementation status:** Smart Travel was implemented and successfully demonstrated, with
 > its hardware, as part of the original university project (2021–22). The physical hardware is currently
 > at the university in India, so no end-to-end hardware demonstration has been carried out during the
@@ -684,8 +694,8 @@ system is available.
 ## Implementation and testing status
 
 **Historical implementation.** The overall system was implemented and successfully demonstrated on the
-physical model during the original university project, as confirmed by the project team, and it received
-awards at project exhibitions (see [Acknowledgements and project context](#acknowledgements-and-project-context)).
+physical model during the original university project, as confirmed by the project team, and was later
+presented at a national-level project competition (see [Acknowledgements and project context](#acknowledgements-and-project-context)).
 The table below lists the specific historical evidence for each part of the system. The original project
 databases and setup slides it refers to are kept privately because they contain personal data.
 
@@ -814,9 +824,7 @@ project report was titled "City transport: RFID-Based Bus Ticketing Systems".
 
 **Project team:** Aditya Ladawa, Samiksha Dhere, Yash Wadekar, Sayee Aher, Tushar Pawar.
 
-**Recognition:** The project received awards at project exhibitions.
-<!-- TODO (repository owner): add the award name, exhibition or event, organiser and year for each award. -->
-*Award details to be added.*
+**Competition:** Presented at ASPIRE-2K24, a national-level project competition organised by PES's Modern College of Engineering with the Institution's Innovation Council, the CSI Student Chapter and the Society for Data Science (20 April 2024); participation certificate.
 
 **Third-party work:** the website is based on the free
 [Dewi template by BootstrapMade](https://bootstrapmade.com/dewi-free-multi-purpose-html-template/). The
