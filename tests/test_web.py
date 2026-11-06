@@ -14,7 +14,7 @@ def test_public_pages_render(client, path):
 
 def test_static_assets_are_served(client):
     for path in ["/static/assets/css/style.css", "/static/assets/js/main.js",
-                 "/static/assets/img/logo-32x32.png", "/static/assets/img/team/team-1.jpg",
+                 "/static/assets/img/logo-32x32.png", "/static/assets/vendor/bootstrap-icons/bootstrap-icons.css",
                  "/static/assets/vendor/bootstrap/css/bootstrap.min.css"]:
         with client.get(path) as response:
             assert response.status_code == 200, path
